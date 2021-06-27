@@ -1,0 +1,37 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+
+// Admin Lte
+@import '~admin-lte/dist/css/adminlte.css';
+
+//Font Awesome
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+//Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//Variable
+
+@import './global/variables';
+
+// Mixin
+
+@import './mixin/mixin';
+
+//Global
+
+
+@import './global/global';
+
+
+
+
+
+// My style
+
+@import './style';

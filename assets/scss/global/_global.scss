@@ -1,0 +1,239 @@
+﻿
+/* Content List */
+/***************/
+// 1.Document
+// 2.Text
+// 3.Multimedia
+// 4.Tables
+// 5. Form
+/**************/
+
+
+
+
+
+
+/*  BASE */
+*,
+::before,
+::after {
+box-sizing: border-box;
+}
+
+html {
+scroll-behavior: smooth;
+}
+/*1.  Document*/
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+html {
+    font-family: $font-family-sans-serif;
+    line-height: $line-height-base;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+ /*========== VARIABLE DARK THEME ==========*/
+
+/*========== BUTTON DARK/LIGHT ==========*/
+.change-theme{
+/* position: absolute; */
+right: 1rem;
+top: .8rem;
+color: $grey-55;
+font-size: 1rem;
+cursor: pointer;
+}
+
+
+
+//  Tipography
+body, * {
+    font-family: $font-family-sans-serif;
+    line-height: $line-height-base;
+    font-size: $font-size-base;
+    color: $grey-55;
+
+    h1, h2, h3, h4, h5, h6, p, span, i, button, div, section, a, article, input, textarea {
+        font-family: $font-family-sans-serif;
+        line-height: $line-height-base;
+    }
+
+    .header-height {
+        height: 3rem;
+    };
+    .d-flex {
+        display:flex;
+        width: 100%;
+    }
+
+
+}
+
+
+
+/* 2.Text */
+
+a {
+    color: $primary;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+a:hover {
+    color: $yellow;
+    text-decoration: underline;
+}
+
+a:not([href]) {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:not([href]):hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+a.btn.disabled,
+fieldset:disabled a.btn {
+    pointer-events: none;
+}
+
+
+h1 {
+    font-size: 1.5rem;
+}
+h2 {
+    font-size: 1.25rem;
+}
+
+h3 {
+    font-size: 1rem;
+}
+
+
+.biggest-font-size {
+    font-size: 2.25rem;
+};
+
+.small-font-size {
+    font-size: 0.813rem;
+}
+.smaller-font-size {
+    font-size:0.75rem;
+}
+
+
+.z-tooltip {
+    z-index: 10;
+} ;
+
+.z-fixed {
+    z-index: 100;
+}
+
+
+
+
+@media screen and (min-width: 768px) {
+
+
+
+    h1 {
+        font-size: 2.25rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+
+    .biggest-font-size {
+        font-size: 4rem;
+    };
+
+    .small-font-size {
+        font-size: 0.875rem;
+    }
+    .smaller-font-size {
+        font-size:0.813rem;
+    }
+  }
+
+/* 3.Multimedia*/
+
+
+
+/* 4.Tables*/
+/* 5. Form*/
+
+button {
+    border-radius: 0;
+}
+
+button:focus {
+    outline: none;
+    outline:none;
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+    -webkit-appearance: button;
+}
+
+button:not(:disabled),
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled) {
+    cursor: pointer;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+    padding: 0;
+    border-style: none;
+}
+
+
+
+.custom-btn {
+   @include btn-sod();
+}
+
+
+.custom-alert {
+    @include alert-sod();
+}
+
+.custom-check {
+    @include checkbox-sod();
+}
+
+
+
+
+
