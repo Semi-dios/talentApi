@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -10,9 +11,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Validator\Constraints\Json;
 
-
-#[Route('/api)]
+/**
+ * @Route("/api")
+ */
 class AuthController extends AbstractController
 {
     private $userRepository;
@@ -30,9 +33,9 @@ class AuthController extends AbstractController
     }
     
     
-    /**
-     * @Route("/register", name="user.register")
-     */
+    
+    #[Route('/register', name: 'user.register')]
+    
     public function register(Request $request): JsonResponse
     {
         $jsonData =  json_decode($request->getContent());
@@ -45,9 +48,9 @@ class AuthController extends AbstractController
 
 
 
-    /**
-     * @Route("/profile", name="user.profile")
-     */
+    
+     #[Route('/profile', name: 'user.profile')]
+     
     public function profile(): JsonResponse
     {
         $currentUser = $this->security->getUser();
@@ -55,7 +58,7 @@ class AuthController extends AbstractController
         
         
         return new JsonResponse([
-            'user'=> $this->serializer->serialize($user)
+            $user
         ],200);
     }
 }

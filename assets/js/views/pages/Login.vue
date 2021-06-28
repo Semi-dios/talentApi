@@ -181,15 +181,14 @@ methods: {
 
          try {
              await this.login(dataForm)
-             .then(()=>{
+             .finally(()=>{
 
                     this.successful = true;
-                    this.$router.replace(
+                    this.$router.push(
                      {
                          name: 'dashboard'
                      }
-                    ) 
-                    
+                    )   
                      this.message = 'Loading ..  !';
              })  
 

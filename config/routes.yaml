@@ -6,3 +6,12 @@ login:
    methods: ['POST']
    defaults:
     _format: json
+dashboard:
+   path: /api/dashboard
+   controller: App\Controller\BlogController::index
+   methods: ['GET']
+profile:
+   path: /api/profile
+   controller: App\Controller\AuthController::profile
+   methods: ['GET']
+  

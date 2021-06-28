@@ -15,7 +15,7 @@
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/#/dashboard">Index</a></li>
+                            <li class="breadcrumb-item"><router-link to="/dashboard">Index</router-link></li>
                             <li class="breadcrumb-item active">{{this.$route.name}}</li>
                             </ol>
                         </div>

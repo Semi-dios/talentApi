@@ -40,6 +40,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Blog", mappedBy="user")
+    */
+
+    private  $blog;
+
+    
+
     public function __construct() {
         $this->roles = ['ROLE_USER'];
     }

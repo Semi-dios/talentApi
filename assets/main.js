@@ -7,8 +7,6 @@ import bsCustomFileInput from 'bs-custom-file-input';
 
 import axios from 'axios'
 
-
-
 bsCustomFileInput.init();
 import Vue from 'vue';
 import App from './js/components/App';
@@ -26,9 +24,10 @@ Vue.use(axios)
 
 require('./js/store/subscriber')
 
-
- new Vue({
-    router,
-    store,
-    render: h => h(App)
-}).$mount('#root');
+store.dispatch('auth/attempt', localStorage.getItem('token')).then(()=>{
+    new Vue({
+        router,
+        store,
+        render: h => h(App)
+    }).$mount('#root');
+})

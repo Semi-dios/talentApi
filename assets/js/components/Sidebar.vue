@@ -1,9 +1,8 @@
 <template>
   <aside id="Sidebar" class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/#/dashboard" class="brand-link">
-      <img src="/images/jeansLogo.jpg" alt="Blog Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">Blog</span>
+    <a href="/dashboard" class="brand-link">
+      <h3 class="brand-text font-weight-light">Blog</h3>
     </a>
 
     <!-- Sidebar -->
@@ -16,24 +15,18 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
            <li class="nav-item has-treeview ">
-            <a href="#" class="nav-link ">
+            <router-link to="/dashboard" class="nav-link ">
               <i class="nav-icon fas fa-cash-register"></i>
               <p>
               Resume
               </p>
-            </a>
+            </router-link>
           </li>
-          |<li class="nav-item has-treeview ">
-                <a href="/dashboard/blogs" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>List Blogs</p>
-                </a>
-              </li>
             <li class="nav-item has-treeview ">
-            <a href="/dashboard/blogs/create" class="nav-link">
+            <router-link to="/dashboard/create" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Create Blog</p>
-            </a>
+            </router-link>
             </li>
 
          
