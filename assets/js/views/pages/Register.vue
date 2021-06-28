@@ -126,7 +126,7 @@
 </template>
 
 <script>
-
+import { mapGetters, mapActions } from 'vuex';
 export default {
     name: 'Register',
     data(){
@@ -167,23 +167,39 @@ export default {
     },
   
     methods: {
-        //...mapActions(["Register"]),
+        ...mapActions(
+           {
+               register: 'auth/register'
+           }
+        ),
         viewLogin(){
         this.title = 'Iniciar Sesión';
         var  show=  true;
         this.$emit('viewShowI', `${this.title}`, show);
       },
-         handleRegister() {
+        handleRegister() {
 
-            this.message = '';
-            this.submitted = true;
+        this.message = '';
+        this.submitted = true;
 
-            this.$validator.validate().then(isValid => {
-                if(isValid) {
-                    this.submit();
-                }
-            });
+        this.$validator.validate().then(isValid => {
+            if(isValid) {
+                this.submit();
+            }
+        });
         },
+        submit(){
+            let dataForm = {
+                'name': this.data.name,
+                'email':this.data.email,
+                'password': this.data.password
+            }
+
+            this.register(dataForm)
+            .then(()=>{
+                console.log("finished")
+            })
+        }
  
        
     }

@@ -4,6 +4,8 @@ import './scss/app.scss';
 import 'bootstrap';
 import bsCustomFileInput from 'bs-custom-file-input';
 
+import axios from 'axios'
+
 
 
 bsCustomFileInput.init();
@@ -16,7 +18,9 @@ import * as VeeValidate from 'vee-validate'
 
 
 Vue.config.productionTip = false;
+//axios.defaults.baseURL = 'http:127.0.0.1:8000/api'
 Vue.use(VeeValidate)
+Vue.use(axios)
 
  new Vue({
     router,
