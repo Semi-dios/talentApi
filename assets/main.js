@@ -2,6 +2,7 @@
 
 import './scss/app.scss';
 import 'bootstrap';
+require('admin-lte')
 import bsCustomFileInput from 'bs-custom-file-input';
 
 import axios from 'axios'
@@ -21,6 +22,10 @@ Vue.config.productionTip = false;
 //axios.defaults.baseURL = 'http:127.0.0.1:8000/api'
 Vue.use(VeeValidate)
 Vue.use(axios)
+
+
+require('./js/store/subscriber')
+
 
  new Vue({
     router,

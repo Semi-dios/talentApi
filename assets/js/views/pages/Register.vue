@@ -4,7 +4,7 @@
          <div class="col-sm-12 ">
              <div class="custom-card card">
                         <div class="card-body register-card-body">
-                        <p class="login-box-msg">Ingrese la información de registro</p>
+                        <p class="login-box-msg">Register</p>
 
                         <form  name="form" @submit.prevent="handleRegister" >
                             <div class="form-row">
@@ -13,7 +13,7 @@
                                   class="form-control" name="name"
                                   v-model="data.name"
                                   v-validate="'required|min:3|max:20'"
-                                  placeholder="Nombre">
+                                  placeholder="Name">
                                   <div class="input-group-append">
                                       <div class="input-group-text">
                                       <span class="fas fa-user"></span>
@@ -32,7 +32,7 @@
                                   <div class="input-group col-sm-12 mb-3">
                                   <input type="email"
                                   class="form-control"
-                                  placeholder="Correo"
+                                  placeholder="Email"
                                   v-model="data.email"
                                   v-validate="'required|email|max:50'"
                                   name="email"
@@ -57,7 +57,7 @@
                                     <div class="input-group col-sm-12 mb-3">
                                         <input type="password"
                                         class="form-control"
-                                        placeholder="Contraseña"
+                                        placeholder="Password"
                                         v-model="data.password"
                                         ref="password"
                                         v-validate="'required|min:6|max:40'"
@@ -100,7 +100,7 @@
                          
                             <div class="row">
                             <div class="col-sm-12 mb-3">
-                                <button type="submit" class="custom-btn custom-btn-primary d-flex justify-content-center">Registrarse</button>
+                                <button type="submit" class="custom-btn custom-btn-primary d-flex justify-content-center">Register me</button>
                             </div>
                             <!-- /.col -->
                             </div>
@@ -114,7 +114,7 @@
 
                             </div>
                             <div class="col-sm-12 text-center">
-                                <a type="button" @click="viewLogin()" class="text-center">Ya tengo una cuenta !</a>
+                                <a type="button" @click="viewLogin()" class="text-center">I already have an account  !</a>
                             </div>
                         </div>
                         </div>
@@ -140,26 +140,7 @@ export default {
             submitted: false,
             successful:false,
             message: '',
-            title :'Registro',roles:  [
-                {
-                    value: 1,
-                    name: 'Admin'
-                },
-                {
-                    value: 2,
-                    name: 'Operador'
-                },
-                {
-                    value: 3,
-                    name: 'Vendedor'
-                },
-                {
-                    value: 4,
-                    name: 'Otro'
-                },
-            ]
-
-
+        
         };
     },
     computed:{
@@ -197,8 +178,14 @@ export default {
 
             this.register(dataForm)
             .then(()=>{
-                console.log("finished")
+                console.log("finished");
+                 this.successful= true,
+                  this.message = 'User registered';
             })
+            .catch((e)=>{
+                 
+                  this.message = e;
+            } )
         }
  
        

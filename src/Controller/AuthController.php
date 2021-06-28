@@ -40,6 +40,22 @@ class AuthController extends AbstractController
 
         return new JsonResponse([
             'user'=>$this->serializer($user, 'json')
-        ]);
+        ],201);
+    }
+
+
+
+    /**
+     * @Route("/profile", name="user.profile")
+     */
+    public function profile(): JsonResponse
+    {
+        $currentUser = $this->security->getUser();
+        $user = $this->serializer->serialize($currentUser,'json');
+        
+        
+        return new JsonResponse([
+            'user'=> $this->serializer->serialize($user)
+        ],200);
     }
 }

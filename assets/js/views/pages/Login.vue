@@ -34,13 +34,13 @@
                                     <!-- /.login-logo -->
                                     <div class="card custom-card">
                                         <div class="card-body login-card-body" >
-                                        <h5 class="login-box-msg">Ingrese sus credenciales</h5>
+                                        <h5 class="login-box-msg">Sing In</h5>
 
                                         <form name="form" @submit.prevent="handlelogin" >
 
                                             <div class="form-row">
                                                 <div class="input-group col-sm-12 mb-3">
-                                                    <input type="email" class="form-control" name="email" v-validate="'required'" v-model="data.email" placeholder="Correo">
+                                                    <input type="email" class="form-control" name="email" v-validate="'required'" v-model="data.email" placeholder="Email">
                                                     <div class="input-group-append">
                                                         <div class="input-group-text">
                                                         <span class="fas fa-envelope"></span>
@@ -48,13 +48,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="input-group col-sm-12">
-                                                    <div class="custom-alert d-flex custom-alert-danger" v-if="errors.has('email')" role="danger">El email es requerido</div>
+                                                    <div class="custom-alert d-flex custom-alert-danger" v-if="errors.has('email')" role="danger">Email  required</div>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="input-group col-sm-12 mb-3">
-                                                        <input type="password" class="form-control" name="password" v-validate="'required'" v-model="data.password" placeholder="Contraseña">
+                                                        <input type="password" class="form-control" name="password" v-validate="'required'" v-model="data.password" placeholder="Password">
                                                         <div class="input-group-append">
                                                             <div class="input-group-text">
                                                             <span class="fas fa-lock"></span>
@@ -62,7 +62,7 @@
                                                         </div>
                                                 </div>
                                                 <div class="input-group col-sm-12">
-                                                        <div class="custom-alert d-flex custom-alert-danger" v-if="errors.has('password')" role="danger">La contraseña es requerida</div>
+                                                        <div class="custom-alert d-flex custom-alert-danger" v-if="errors.has('password')" role="danger">Password required</div>
                                                 </div>
                                             </div>
                                                 <div class="input-group col-sm-12 mb-3">
@@ -87,10 +87,10 @@
                                         <div class="row">
                                             <div class="col-sm-12 d-flex justify-content-between">
                                                 <p class="mb-1">
-                                                    <a href="/#/forgot">¿Olvidó su contraseña?</a>
+                                                    <a href="/#/forgot">¿Forgot Password?</a>
                                                 </p>
                                                 <p class="mb-0">
-                                                    <a type="button" @click="viewShow('Registro',false)" class="text-center">Registrarse</a>
+                                                    <a type="button" @click="viewShow('Registro',false)" class="text-center">Register me</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@
 </template>
 
 <script>
-
+import { mapGetters, mapActions } from 'vuex';
 import viewRegister from './Register.vue';
 import * as VeeValidate from 'vee-validate'
 export default {
@@ -131,7 +131,7 @@ export default {
         },
         isLoggin: false,
         message: '',
-        title: 'Iniciar Sesión',
+        title: 'Sing In',
         show:  true
         }
     },
@@ -142,7 +142,11 @@ created(){
 
 },
 methods: {
-    //...mapActions(["LogIn"]),
+    ...mapActions(
+        {
+            login: 'auth/login'
+        }
+    ),
 
     viewShow(data, show){
         console.log(data)
@@ -163,29 +167,38 @@ methods: {
            return;
          }
         if (this.data.email && this.data.password) {
-               // this.submit();
+              this.submit();
         }
 
        })
 
      },
-    /*  async submit(){
-         const User = new FormData;
-         User.append("email",this.data.email)
-         User.append("password",this.data.password)
+     async submit(){
+            let dataForm = {
+                'email':this.data.email,
+                'password': this.data.password
+            }
 
          try {
-             await this.LogIn(User) ;
-             this.$router.push("/dashboard")
-             this.successful = true;
-              this.message = 'Iniciando ..  !';
+             await this.login(dataForm)
+             .then(()=>{
+
+                    this.successful = true;
+                    this.$router.replace(
+                     {
+                         name: 'dashboard'
+                     }
+                    ) 
+                    
+                     this.message = 'Loading ..  !';
+             })  
 
          }catch(error) {
-               this.message = 'Error al iniciar sesión !';
-                         console.log(error.toString());
-                            this.successful = false;
+               this.message = error.message;
+                console.log(error);
+                this.successful = false;
          }
-     } */
+     } 
 
 },
 
